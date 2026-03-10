@@ -19,3 +19,9 @@ export class PagamentoPix implements MetodoPagamento {
     console.log(`Gerando QR Code PIX: R$ ${valor.toFixed(2)}`);
   }
 }
+
+export class PagamentoCriptomoeda implements MetodoPagamento {
+  processar(valor: number): void {
+    console.log(`Pagamento de R$ ${valor} processado via Criptomoeda.`);
+  }
+}

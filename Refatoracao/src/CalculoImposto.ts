@@ -19,3 +19,9 @@ export class ImpostoVestuario implements CalculadoraImposto {
     return (preco * quantidade) * 0.10;
   }
 }
+
+export class ImpostoLivro implements CalculadoraImposto {
+  calcular(preco: number, quantidade: number) : number {
+    return 0;
+  }
+}

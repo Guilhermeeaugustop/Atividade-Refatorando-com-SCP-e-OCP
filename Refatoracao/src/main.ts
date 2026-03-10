@@ -1,5 +1,5 @@
-import { ImpostoEletronico, ImpostoAlimento, ImpostoVestuario } from './CalculoImposto';
-import { PagamentoCartao, PagamentoBoleto, PagamentoPix } from './Pagamento';
+import { ImpostoEletronico, ImpostoAlimento, ImpostoVestuario, ImpostoLivro } from './CalculoImposto';
+import { PagamentoCartao, PagamentoBoleto, PagamentoPix, PagamentoCriptomoeda } from './Pagamento';
 import { NotificacaoEmail } from './Notificacao';
 import { ProcessadorPedido } from './ProcessarPedido';
 
@@ -35,3 +35,17 @@ processador.processar(
 );
 
 console.log("\n=== PROCESSAMENTO CONCLUÍDO ===");
+
+console.log("\n=== 3 - Parte (add livro + criptomoeda) ===\n");
+
+console.log("Pedido 3 : livro Meditações - Marcos Aurelio")
+
+const impostoLivro = new ImpostoLivro();
+const pagamentoCriptomoeda = new PagamentoCriptomoeda();
+processador.processar(
+  impostoLivro,
+  50.00,
+  1,
+  pagamentoCriptomoeda,
+  "GuilhermeAugusto.P@email.com"
+);
