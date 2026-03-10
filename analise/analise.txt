@@ -1,0 +1,45 @@
+Código da atividade : 
+
+class ProcessadorPedido {
+calcularTotal(tipoProduto: string, preco: number, quantidade: number): number {
+let total = preco * quantidade;
+switch (tipoProduto) {
+case "ELETRONICO":
+total += total * 0.15; // 15% imposto
+break;
+case "ALIMENTO":
+total += total * 0.05; // 5% imposto
+break;
+case "VESTUARIO":
+total += total * 0.10; // 10% imposto
+break;
+}
+return total;
+}
+processarPagamento(formaPagamento: string, valor: number): void {
+switch (formaPagamento) {
+case "CARTAO_CREDITO":
+console.log(`Processando cartão: R$ ${valor}`);
+break;
+case "BOLETO":
+console.log(`Gerando boleto: R$ ${valor}`);
+break;
+case "PIX":
+console.log(`Gerando QR Code PIX: R$ ${valor}`);
+break;
+}
+}
+enviarConfirmacao(email: string, valor: number): void {
+console.log(`Enviando email para ${email}: Seu pedido de R$ ${valor} foi confirmado!`);
+}
+}
+
+***
+
+Parte 1
+
+1 - A classe ProcessadorPedido, ela tem 3 responsabilidades, ela calcula o total de impostos sobre o produto,  ela processa os pagamentos e por fim notifica o cliente, ou seja, seguindo o padrão SRP a classe ProcessadorPedido quebra a regra de responsabilidade única.
+
+2 - O setor financeiro, poderia soliciar mais formas de pagamentos junto com um sistema de impostos atualizado, conforme os dados, o setor de atendimento ao cliente, poderia soliciar outras formas de envio sms/whatsApp e o setor de TI pedir uma reforma do código, com logs.
+
+3 - A técnica do OCP é violado nos Switch, onde para adicionar um produto novo, você precisa modificar o código original, assim como nos meios de pagamento.
